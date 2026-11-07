@@ -1,11 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> Weather App </title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
+        crossorigin="anonymous"></script>
+
+
 </head>
+
 <body>
-    
+    <div class="row">
+        <div class="col">
+
+            <h1 class="logo">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100"
+                    viewBox="0,0,256,256">
+                    <g fill="#fcc419" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                        style="mix-blend-mode: normal">
+                        <g transform="scale(5.33333,5.33333)">
+                            <path
+                                d="M23.97656,3.97852c-0.82766,0.01293 -1.48844,0.69381 -1.47656,1.52148v3c-0.00765,0.54095 0.27656,1.04412 0.74381,1.31683c0.46725,0.27271 1.04514,0.27271 1.51238,0c0.46725,-0.27271 0.75146,-0.77588 0.74381,-1.31683v-3c0.00582,-0.40562 -0.15288,-0.7963 -0.43991,-1.08296c-0.28703,-0.28666 -0.67792,-0.44486 -1.08353,-0.43852zM10.90234,9.4043c-0.61065,0.00015 -1.16026,0.37042 -1.38978,0.93629c-0.22952,0.56587 -0.09314,1.21439 0.34486,1.63988l2.12109,2.12109c0.58626,0.58626 1.53678,0.58626 2.12305,0c0.58626,-0.58626 0.58626,-1.53678 0,-2.12305l-2.12109,-2.12109c-0.28328,-0.29067 -0.67225,-0.45415 -1.07812,-0.45312zM37.05078,9.4043c-0.38956,0.01135 -0.75941,0.17386 -1.03125,0.45313l-2.12109,2.12109c-0.58626,0.58626 -0.58626,1.53678 0,2.12305c0.58626,0.58626 1.53678,0.58626 2.12305,0l2.12109,-2.12109c0.44468,-0.43137 0.57845,-1.09172 0.33671,-1.66214c-0.24175,-0.57042 -0.80928,-0.93356 -1.4285,-0.91403zM24,13c-6.07513,0 -11,4.92487 -11,11c0,6.07513 4.92487,11 11,11c6.07513,0 11,-4.92487 11,-11c0,-6.07513 -4.92487,-11 -11,-11zM5.5,22.5c-0.54095,-0.00765 -1.04412,0.27656 -1.31683,0.74381c-0.27271,0.46725 -0.27271,1.04514 0,1.51238c0.27271,0.46725 0.77588,0.75146 1.31683,0.74381h3c0.54095,0.00765 1.04412,-0.27656 1.31683,-0.74381c0.27271,-0.46725 0.27271,-1.04514 0,-1.51238c-0.27271,-0.46725 -0.77588,-0.75146 -1.31683,-0.74381zM39.5,22.5c-0.54095,-0.00765 -1.04412,0.27656 -1.31683,0.74381c-0.27271,0.46725 -0.27271,1.04514 0,1.51238c0.27271,0.46725 0.77588,0.75146 1.31683,0.74381h3c0.54095,0.00765 1.04412,-0.27656 1.31683,-0.74381c0.27271,-0.46725 0.27271,-1.04514 0,-1.51238c-0.27271,-0.46725 -0.77588,-0.75146 -1.31683,-0.74381zM13.00977,33.44531c-0.38956,0.01135 -0.75941,0.17386 -1.03125,0.45313l-2.12109,2.12109c-0.37938,0.37922 -0.5276,0.93205 -0.3888,1.45019c0.1388,0.51814 0.54351,0.92286 1.06165,1.06165c0.51814,0.1388 1.07097,-0.00942 1.45019,-0.3888l2.12109,-2.12109c0.44468,-0.43137 0.57845,-1.09172 0.33671,-1.66214c-0.24175,-0.57042 -0.80928,-0.93356 -1.4285,-0.91403zM34.94336,33.44531c-0.61064,0.00015 -1.16026,0.37042 -1.38978,0.93629c-0.22952,0.56587 -0.09314,1.21439 0.34486,1.63988l2.12109,2.12109c0.58626,0.58626 1.53678,0.58626 2.12305,0c0.58626,-0.58626 0.58626,-1.53678 0,-2.12305l-2.12109,-2.12109c-0.28328,-0.29067 -0.67225,-0.45415 -1.07812,-0.45313zM23.97656,37.97852c-0.82766,0.01293 -1.48843,0.69381 -1.47656,1.52148v3c-0.00765,0.54095 0.27656,1.04412 0.74381,1.31683c0.46725,0.27271 1.04514,0.27271 1.51238,0c0.46725,-0.27271 0.75146,-0.77588 0.74381,-1.31683v-3c0.00582,-0.40562 -0.15288,-0.7963 -0.43991,-1.08296c-0.28703,-0.28666 -0.67792,-0.44486 -1.08353,-0.43852z">
+                            </path>
+                        </g>
+                    </g>
+                </svg>&nbsp;Weather
+            </h1>
+        </div>
+        <div class="col">
+            <div class="row header-row">
+                <div class="col">
+
+                    <input class="form-control " type="text" id="sizesInputDefault" placeholder="Search City "
+                        aria-label="Default input example">
+
+                </div>
+
+                <div class="col">
+
+                    <button type="button" class="theme-primary btn-solid btn-styled">
+                        Search
+                        <svg class="bi ms-1" width="16" height="16" aria-hidden="true">
+                            <use href="#arrow-right" />
+                        </svg>
+                    </button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="weather-container">
+        <div class="card">
+            <div class="card-body">
+                <div class="weather-details">
+
+                    <h1 class="weather-info"> Colombo,Sri Lanka </h1>
+                    <p class="weather-date"> Thursday, 05 November 2026 | 10:15 AM </p>
+
+                </div>
+                <div class="temperature-section">
+
+                    <div class="weather-icon">
+                        ☀️
+                    </div>
+
+                    <h1 class="temperature">29°</h1>
+
+                    <div class="condition">
+                        <h2>Partly cloudy</h2>
+                        <p>High 31° · Low 26°</p>
+                    </div>
+
+                </div>
+
+                <div class="weather-boxes">
+                    <div class="box-1">
+                        <p> Feels like </p>
+                        <h2>33°</h2>
+
+                    </div>
+                    <div class="box-2">
+                        <p> Humidity </p>
+                        <h2>78%</h2>
+
+                    </div>
+                    <div class="box-3">
+                        <p> Wind</p>
+                        <h2>14 km/h</h2>
+                    </div>
+                    <div class="box-4">
+
+                        <p> Rain chance</p>
+                        <h2> 40% </h2>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="forecast-card">
+
+            <h2>7-day forecast</h2>
+
+            <div class="forecast-item">
+                <span> Today </span <span class="low-temp">26°</span>
+
+                <div class="temp-bar">
+                    <div class="temp-fill"></div>
+                </div>
+
+                <span class="high-temp">31°</span>
+            </div>
+
+            <div class="forecast-item">
+                <span>Tue</span>
+                <span class="low-temp">25°</span>
+
+                <div class="temp-bar">
+                    <div class="temp-fill"></div>
+                </div>
+
+                <span class="high-temp">30°</span>
+            </div>
+
+            <div class="forecast-item">
+                <span>Wed</span>
+                <span class="low-temp">25°</span>
+                <div class="temp-bar">
+                    <div class="temp-fill"></div>
+                </div>
+
+                <span class="high-temp">29°</span>
+            </div>
+            <div class="forecast-item">
+                <span>Thu</span>
+                <span class="low-temp">26°</span>
+                <div class="temp-bar">
+                    <div class="temp-fill"></div>
+                </div>
+
+                <span class="high-temp">31°</span>
+            </div>
+
+            <div class="forecast-item">
+                <span>Fri</span>
+                <span class="low-temp">26°</span>
+                <div class="temp-bar">
+                    <div class="temp-fill"></div>
+                </div>
+
+                <span class="high-temp">32°</span>
+            </div>
+
+            <div class="forecast-item">
+                <span>Sat</span>
+                <span class="low-temp">25°</span>
+                <div class="temp-bar">
+                    <div class="temp-fill"></div>
+                </div>
+
+                <span class="high-temp">32°</span>
+            </div>
+
+            <div class="forecast-item">
+                <span>Sun</span>
+                <span class="low-temp">25°</span>
+                <div class="temp-bar">
+                    <div class="temp-fill"></div>
+                </div>
+
+                <span class="high-temp">31°</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="js/app.js"> </script>
+
+
+
+
+
 </body>
+
 </html>
