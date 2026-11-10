@@ -39,7 +39,7 @@ async function getWeather(city) {
         }
 
         cityName.textContent = data.location.name + ", " + data.location.country;
-        
+
         weatherDate.textContent = data.location.localtime;
 
         temperature.textContent = data.current.temp_c + "°";
@@ -66,4 +66,42 @@ async function getWeather(city) {
 
     }
 
+}
+
+const map = L.map('map').setView([7.8731, 80.7718], 8);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+
+let marker = null;
+
+map.on('click', async function (e) {
+
+    let lat = e.latlng.lat;
+    let lon = e.latlng.lng;
+
+    if (marker) {
+        map.removeLayer(marker);
+    }
+
+    marker = L.marker([lat, lon]).addTo(map);
+
+    const cityName = await getCityFromCordinates(lat, lon);
+    if (cityName) {
+        getWeather(cityName);
+    }
+});
+
+async function getCityFromCordinates(lat, lon) {
+    try {
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`);
+        const data = await response.json();
+
+        const address = data.address;
+        const cityName = address.city || address.town || address.village || address.suburb || address.country;
+        return cityName;
+    } catch (error) {
+        return null;
+    }
 }

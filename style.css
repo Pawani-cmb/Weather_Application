@@ -3,15 +3,23 @@ body {
    color: white;
    font-family: Arial, Helvetica, sans-serif;
    padding: 30px 20px 20px 30px;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+}
 
+.row {
+   justify-content: center;
+   align-items: center;
 }
 
 .card {
-   margin-top: 50px;
+   margin-top: 0;
    background-color: #051d4e;
    color: white;
    border-radius: 20px;
-   height: 500px;
+   height: 530px;
+
 
 }
 
@@ -196,6 +204,7 @@ body {
    border: 1px solid #294777;
    border-radius: 20px;
    padding: 25px;
+   height: 530px;
 }
 
 .forecast-item {
@@ -220,4 +229,13 @@ body {
    height: 5px;
    background-color: #fcbf49;
    border-radius: 10px;
+}
+
+.map {
+   width: 40%;
+   height: 530px;
+   border-radius: 20px;
+   overflow: hidden;
+   background-color: #102b5a;
+   border: 1px solid #294777;
 }
